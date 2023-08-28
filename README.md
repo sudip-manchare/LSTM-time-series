@@ -1,22 +1,34 @@
 # LSTM-time-series
-Reliance stock price prediction using LSTM layered neural network
-This is my attempt to learn time-series data analysis by predicting stock prices using LSTM layers in a neural network.
-LSTM stands for long-short-term memory and is a type of recurrent neural network(RNN) capable of learning sequence patterns and predicting accordingly.
-Example:
-given_series = [1, 2, 3, 4, 5, 6, 7] for 7 days of a week
-output_expected = [8, 9, 10] for 3 days following the above week
-sliding window concept is used. Let us say window size is 3
-model is trained using the following method:
-if
-for input = [1, 2, 3] , output = [4]
-for input = [2, 3, 4] , output = [5]
-for input = [3, 4, 5] , output = [6]
-for input = [4, 5, 6] , output = [7]
-for input = [4, 5, 6] , output = [7]
-then 
-for input = [5, 6, 7] , output = ?
-Let us say we get as o1
-for next 2,
-for input = [6, 7, o1] , output = o2
-for input = [7, o1, o2], output = o3
-Then I have compared analogous equivalents of [8, 9, 10] vs [o1, o2, o3] in the notebook.
+## Reliance Stock Price Prediction with LSTM
+
+This project demonstrates time-series data analysis by predicting stock prices using LSTM (Long Short-Term Memory) layers in a neural network. LSTM is a recurrent neural network (RNN) capable of learning sequence patterns and making predictions accordingly.
+
+## Problem Statement
+
+Given a historical stock price series, we aim to predict the stock prices for the next few days using a sliding window approach. For instance:
+
+Given historical stock prices for 7 days:
+
+given_series = `[1, 2, 3, 4, 5, 6, 7]`
+
+We want to predict the stock prices for the next 3 days:
+
+output_expected = `[8, 9, 10]`
+
+
+We use a sliding window concept with a window size of 3 to train our model:
+
+- For input `[1, 2, 3]`, the output is `[4]`
+- For input `[2, 3, 4]`, the output is `[5]`
+- For input `[3, 4, 5]`, the output is `[6]`
+- For input `[4, 5, 6]`, the output is `[7]`
+
+Once we have a prediction for `[5, 6, 7]`, say `o1`, we use this prediction as a part of the input for the next predictions:
+
+- For input `[5, 6, 7]`, the output is `o1`
+- For input `[6, 7, o1]`, the output is `o2`
+- For input `[7, o1, o2]`, the output is `o3`
+
+We then compare these predicted values `[o1, o2, o3]` to the actual values `[8, 9, 10]` to assess the performance of our model.
+
+
